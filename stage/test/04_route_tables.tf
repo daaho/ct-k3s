@@ -61,7 +61,7 @@ resource "aws_route_table" "rt-private" {
 resource "aws_route" "nat-gw" {
   route_table_id         = aws_route_table.rt-private.id
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.ngw-private-1a.id
+  nat_gateway_id         = aws_nat_gateway.ngw-public-1a.id
 }
 
 data "aws_subnets" "all-private-subnets" {

@@ -18,16 +18,16 @@ resource "aws_internet_gateway" "igw-k3s" {
 # NAT Gateway
 #
 #--------------------------------------------------------------------------------------------------
-resource "aws_eip" "eip-private-1a" {
+resource "aws_eip" "eip-public-1a" {
   vpc = true
 }
 
-resource "aws_nat_gateway" "ngw-private-1a" {
-  allocation_id = aws_eip.eip-private-1a.id
-  subnet_id     = aws_subnet.private-1a.id
+resource "aws_nat_gateway" "ngw-public-1a" {
+  allocation_id = aws_eip.eip-public-1a.id
+  subnet_id     = aws_subnet.public-1a.id
 
   tags = {
-    Name = "ngw-private-1a"
+    Name = "ngw-public-1a"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
